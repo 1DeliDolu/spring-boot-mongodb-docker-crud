@@ -31,18 +31,18 @@ public class BookController {
     }
 
     @GetMapping("/genre/{genre}")
-    public List<Book> getBooksByGenre(@PathVariable String genre) {
+    public List<Book> getBooksByGenre(@PathVariable("genre") String genre) {
         return bookRepository.findByGenre(genre);
     }
 
     @PutMapping("/updateBook/{id}")
-    public Book updateBook(@PathVariable String id, @RequestBody Book book) {
+    public Book updateBook(@PathVariable("id") String id, @RequestBody Book book) {
         book.setId(id);
         return bookRepository.save(book);
     }
 
     @DeleteMapping("/deleteBook/{id}")
-    public void deleteBook(@PathVariable String id) {
+    public void deleteBook(@PathVariable("id") String id) {
         bookRepository.deleteById(id);
     }
 }
